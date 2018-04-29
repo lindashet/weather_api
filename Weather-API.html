@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Weather-API</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto Slab script=all rev=2" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css' />
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<div class="container">
+  <div class="position"> </div><i class="fas fa-thumbtack" id="locat"></i>
+  <div class="weather">
+    <div class="block"></div>
+    <div class="left">
+      <div class="location">
+        <h2 id="city">新北市中和區</h2>
+        <h4 id="weather">晴時多雲</h4>
+        <div id="weather_board"></div>
+      </div>
+    </div>
+    <div class="temp">
+      <div class="date"> 
+        <h4 id="date">APRIL 08</h4>
+        <h3 id="week">SAT</h3>
+        <h2> <span class="low" id="c_min">15</span><span> | </span><span class="high" id="c_max">25</span></h2>
+      </div>
+      <h1 id="temp">25</h1>
+    </div>
+    <div class="block"></div>
+  </div>
+  <div class="forecast">
+    <div class="hr"></div>
+    <div class="days">
+      <div class="ver-block"></div>
+      <div class="fore_cnt">
+        <div class="day day1">
+          <div class="date">
+            <h3 id="f_date_1">09</h3>
+            <h5 id="f_day_1">SUN</h5>
+          </div>
+          <div class="f_icon" id="f_icon_1"></div>
+          <div class="temp">
+            <h2> <span class="low" id="f_min_1">22</span><span> | </span><span class="high" id="f_max_1">30</span></h2>
+            <h4><span id="f_weather_1">局部多雲</span></h4>
+          </div>
+        </div>
+      </div>
+      <div class="ver-line"></div>
+      <div class="fore_cnt">
+        <div class="day day2">
+          <div class="date">
+            <h3 id="f_date_2">11</h3>
+            <h5 id="f_day_2">TUE</h5>
+          </div>
+          <div class="f_icon" id="f_icon_2"></div>
+          <div class="temp">
+            <h2> <span class="low" id="f_min_2">22</span><span> | </span><span class="high" id="f_max_2">30</span></h2>
+            <h4><span id="f_weather_2">局部多雲</span></h4>
+          </div>
+        </div>
+      </div>
+      <div class="ver-line"></div>
+      <div class="fore_cnt">
+        <div class="day day3">
+          <div class="date">
+            <h3 id="f_date_3">11</h3>
+            <h5 id="f_day_3">TUE</h5>
+          </div>
+          <div class="f_icon" id="f_icon_3"></div>
+          <div class="temp">
+            <h2> <span class="low" id="f_min_3">22</span><span> | </span><span class="high" id="f_max_3">30</span></h2>
+            <h4><span id="f_weather_3">局部多雲</span></h4>
+          </div>
+        </div>
+      </div>
+      <div class="ver-block"></div>
+    </div>
+  </div>
+</div>
+<script src="js/action.js"></script>
+</body>
+
+</html>
