@@ -36,31 +36,9 @@ function connectFn() {
 }
 
 function getLocation() {
-    //XMLHttpRequest 物件專門用來和伺服器做連線
-    var req = new XMLHttpRequest();
-    
-    // Post 傳送本地資料
-    req.open(
-        "post", 
-        "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA9HZHTYPmZR1TUi4eXU4ILeF_1F37Flc4", 
-        true);
-
-    req.onload = function() { //load事件，偵測連線狀態結束
-        //連線完成，將取得的JSON資料轉為物件格式
-        var response = JSON.parse(this.responseText);
-        if (response) {
-            lat = "&lat=" + response.location.lat;
-            lon = "&lon=" + response.location.lng;
-            geo = response.location.lat + ',' + response.location.lng;
-            connectFn();
-            
-
-        } else {
-            alert("無法定位");
-            return false;
-
-        }
-        var result = geo;
+ if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(get)
+ }
     }
 
     req.send(); //送出連線
