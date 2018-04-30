@@ -1,4 +1,8 @@
-var
+$(document).ready(function(){ 
+
+    $('.bubblingG').show();
+    
+    var
     date = document.getElementById('date'),
     week = document.getElementById('week'),
     city = document.getElementById('city'),
@@ -24,27 +28,24 @@ var
     gtd = d.getDay();
 
 
-getData();
-
-function getData() {
-    getLocation();
-}
-
-function connectFn() {
-    getCity();
-    getWeather();
-}
+getLocation();
 
 function getLocation() {
- if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(get)
- }
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition)
+    } else{
+        alert("您的瀏覽器不支援存取地理位置");
     }
-
-    req.send(); //送出連線
 }
 
-function getCity() {
+function showPosition(position) {
+    geo = position.coords.latitude +','+ position.coords.longitude;
+    getCity(geo);
+    getWeather(geo);
+	
+}
+
+function getCity(geo) {
     var req = new XMLHttpRequest();
 
     req.open("get", 
@@ -66,7 +67,7 @@ function getCity() {
     req.send();
 }
 
-function getWeather() {
+function getWeather(geo) {
     var req = new XMLHttpRequest();
     req.open(
         "get",
@@ -176,3 +177,75 @@ function mktime(h, m, s, month, day, year) {
 }
 
 locat.addEventListener('click', getLocation);
+
+var placeSearch, autocomplete;
+var addr;
+$("#autocomplete").on("blur", function(e) {
+  addr = $("#autocomplete").val();
+  console.log(addr);
+  getSearching();      
+});
+
+  function getSearching() {
+    var req = new XMLHttpRequest();
+
+    req.open("get", 
+            "https://maps.googleapis.com/maps/api/geocode/json?address=" + addr + "&key=AIzaSyA9HZHTYPmZR1TUi4eXU4ILeF_1F37Flc4",
+             true);
+
+    req.onload = function() { 
+        var response = JSON.parse(this.responseText);
+        if (response.status === "OK") {
+            var geo = response.results[0].geometry.location.lat +","+ response.results[0].geometry.location.lng;
+            console.log(geo);
+            getCity(geo);
+            getWeather(geo);
+            
+
+        } else {
+            alert("找不到地區");
+        }
+
+    }
+    req.send();
+}
+
+  function initAutocomplete() {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
+    autocomplete = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+        {types: ['geocode']});
+
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    autocomplete.addListener('place_changed', fillInAddress);
+  }
+
+  function fillInAddress() {
+    // Get the place details from the autocomplete object.
+    var place = autocomplete.getPlace();
+
+
+  }
+
+  // Bias the autocomplete object to the user's geographical location,
+  // as supplied by the browser's 'navigator.geolocation' object.
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
+      });
+    }
+  }
+
+})
+

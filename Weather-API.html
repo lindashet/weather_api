@@ -86,7 +86,29 @@
     </div>
   </div>
 </div>
+<div id="locationField">
+    <span>搜尋</span>
+    <input id="autocomplete" placeholder="輸入區域" type="text"></input>
+
+    <!-- onFocus="geolocate()" -->
+  </div>
+<div class="bubblingG">
+    <span id="bubblingG_1">
+    </span>
+    <span id="bubblingG_2">
+    </span>
+    <span id="bubblingG_3">
+    </span>
+  </div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9HZHTYPmZR1TUi4eXU4ILeF_1F37Flc4&libraries=places&callback=initAutocomplete"
+    async defer></script>
 <script src="js/action.js"></script>
+<script src="js/search.js"></script>
+
 </body>
 
 </html>
