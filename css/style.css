@@ -9,13 +9,14 @@
   letter-spacing: 1px;
   font-weight: 400;
   color: #ffc235;
+  /* outline:#00ff00 solid 1px; */
 }
 
 body {
   /* overflow: hidden; */
 }
 
-/* .bubblingG {
+#loading {
   text-align: center;
   position: absolute;  
   top: 0%;
@@ -24,24 +25,51 @@ body {
 	height:100%;
   margin: auto;
   background: rgba(49, 58, 110, 0.7);
-  background-size: cover;
-} */
+  background-size: 150%;
+}
 
-#autocomplete {
+#locationField {
   position: absolute;
   top: 10px;
-  left: 45vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#autocomplete {
+
   width: 200px;
   height: 30px;
   color: #777;
+  /* border-radius: 15px; */
+  padding: 5px;
+  font-size: 12px;
+  border: 0px;
+  border-bottom: solid 1px #efefef;
+  background-color: transparent;
 }
-#autocomplete span {
-  color: #ffc235;
+
+#locationField span {
+  display: inline-block;
+  text-align: center;
+  line-height: 30px;
+  width: 50px;
+  border-radius: 15px;
+  font-size: 13px;
+  border: solid 1px #efefef;  
+  color: #efefef;
+  cursor: pointer;
+
+}
+.bubblingG {
+  position: absolute;  
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);  
 }
 .bubblingG span {
 	display: inline-block;
-	vertical-align: middle;
-	width: 9px;
+  vertical-align: middle;
+  width: 9px;
 	height: 9px;
 	margin: 23px auto;
 	background: rgba(29, 16, 102, 0.91);
@@ -232,6 +260,14 @@ i.fas.fa-thumbtack {
 }
 .location h4 {
   font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+#country {
+  font-size: 0.7rem;
+  padding: 0.2rem;
+  background-color: rgb(177, 80, 156);
+  color: #fff;
+  border-radius: 7px;
 }
 
 #weather_board {
